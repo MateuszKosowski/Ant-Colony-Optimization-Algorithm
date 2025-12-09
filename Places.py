@@ -8,8 +8,7 @@ class Place:
 class Places:
 
     def __init__(self, file_to_load):
-        self.places = list()
-        self.places_dict = dict()
+        self.places_list = list()
         self._load_from_file(file_to_load)
 
     def _load_from_file(self, filename):
@@ -24,8 +23,7 @@ class Places:
                             x = int(parts[1])
                             y = int(parts[2])
                             place = Place(number, x, y)
-                            self.places.append(place)
-                            self.places_dict[number] = place
+                            self.places_list.append(place)
         except FileNotFoundError:
             print(f"Błąd: Nie znaleziono pliku {filename}")
         except Exception as e:
