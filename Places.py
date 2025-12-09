@@ -9,9 +9,9 @@ class Places:
 
     def __init__(self, file_to_load):
         self.places_list = list()
-        self._load_from_file(file_to_load)
+        self.load_from_file(file_to_load)
 
-    def _load_from_file(self, filename):
+    def load_from_file(self, filename):
         try:
             with open(filename, 'r') as file:
                 for line in file:
