@@ -19,7 +19,7 @@ class Places:
                     if line:
                         parts = line.split()
                         if len(parts) == 3:
-                            number = int(parts[0])
+                            number = int(parts[0]) - 1
                             x = int(parts[1])
                             y = int(parts[2])
                             place = Place(number, x, y)

@@ -1,5 +1,5 @@
 import math
-from random import random
+import random
 
 
 class Ant:
@@ -43,13 +43,13 @@ class Ant:
 
     def __init__(self, place, alpha=1.0, beta=1.0, p_random=0.01):
         self.current_place = place
-        self.visited_places = set()
+        self.visited_places = []
         self.distance_travelled = list()
         self.alpha = alpha
         self.beta = beta
         self.p_random = p_random
 
-        self.visited_places.add(place)
+        self.visited_places.append(place)
         self.distance_travelled.append(0)
 
 
@@ -61,7 +61,7 @@ class Ant:
 
     def visit(self, place):
         if place not in self.visited_places:
-            self.visited_places.add(place)
+            self.visited_places.append(place)
         distance = self.calculate_distance(place)
         self.distance_travelled.append(distance)
         self.current_place = place
@@ -77,7 +77,7 @@ class Ant:
         available_places = self.available_places(places)
 
         # Szansa, że mrówka oleje wszystkie zasady i zrobi coś losowo
-        if random() < self.p_random:
+        if random.random() < self.p_random:
             next_place = random.choice(available_places)
         else:
             numerators = []
