@@ -42,7 +42,7 @@ def main():
             print(f"Iteracja {iteration}: Najlepsza odległość = {best_distance}")
 
     print(f"\nNajlepsze rozwiązanie: {best_distance}")
-    # Konwersja setu obiektów Place na listę numerów + 1 (aby pokazać oryginalne numery z pliku)
+
     route_numbers = [place.number + 1 for place in best_solution]
     print(f"Trasa: {route_numbers}")
 
