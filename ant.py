@@ -69,7 +69,7 @@ class Ant:
     def available_places(self, places):
         available_places = []
         for place in places.places_list:
-            if place not in self.visited_places:
+            if place not in self.visited_places and place != self.current_place:
                 available_places.append(place)
         return available_places
 
@@ -83,7 +83,9 @@ class Ant:
             numerators = []
 
             for place in available_places:
-                reverse_distance = 1 / self.calculate_distance(place)
+                distance = self.calculate_distance(place)
+                # Dodajemy małą wartość epsilon, aby uniknąć dzielenia przez zero
+                reverse_distance = 1 / (distance + 1e-10)
                 pheromone_on_path = Ant.pheromone_matrix[self.current_place.number][place.number]
                 numerator = pow(pheromone_on_path, self.alpha) * pow(reverse_distance, self.beta)
                 numerators.append(numerator)

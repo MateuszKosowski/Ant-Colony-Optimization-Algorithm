@@ -6,12 +6,12 @@ from places import Places
 
 def main():
 
-    file_to_load = "A-n32-k5.txt"
-    number_of_ants = 50
+    file_to_load = "A-n80-k10.txt"
+    number_of_ants = 100
     ant_alpha = 1.0
     ant_beta = 2.0
-    p_random = 0.01
-    number_of_iterations = 500
+    p_random = 0.05
+    number_of_iterations = 1000
     evaporation_rate = 0.5
 
     all_places = Places(file_to_load)
