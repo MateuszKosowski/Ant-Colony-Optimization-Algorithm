@@ -64,8 +64,8 @@ class Ant:
             numerators.append(numerator)
 
 
-        # Metoda ruletki - k to parametr jak dużo obiektów zwrócić, więc bieżemy [0]
-        # Dodatkowo metoda ta sama zliczy total i podzieli
+        # Metoda ruletki - k to parametr jak dużo obiektów zwrócić, więc bierzemy [0], bo chcemy tylko 1
+        # Dodatkowo metoda ta sama znormalizuje dane (czyli to z tym total i dzielenie każdego numerator)
         next_place = random.choices(available_places, weights=numerators, k=1)[0]
 
         self.visit(next_place)
