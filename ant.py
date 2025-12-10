@@ -76,6 +76,10 @@ class Ant:
     def select_next_place(self, places):
         available_places = self.available_places(places)
 
+        if len(available_places) == 0:
+            return None
+
+
         # Szansa, że mrówka oleje wszystkie zasady i zrobi coś losowo
         if random.random() < self.p_random:
             next_place = random.choice(available_places)
