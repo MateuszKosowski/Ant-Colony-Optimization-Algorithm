@@ -34,7 +34,7 @@ def main():
     for iteration in range(args.iterations):
         ants = []
 
-        worst_distance_in_pop = float('inf')
+        worst_distance_in_pop = 0.0
         sum_distance = 0
 
         for i in range(args.ants):
@@ -94,7 +94,7 @@ def main():
         "execution_time": execution_time,
     }
 
-    with open(f"results/result_f{args.file}_n{args.ants}_a{args.alpha}_b{args.beta}_p{args.p_random}_i{args.iterations}_id{args.id}.json", "w") as f:
+    with open(f"results/result_f{args.file}_n{args.ants}_a{args.alpha}_b{args.beta}_p{args.p_random}_i{args.iterations}_e{args.evaporation_rate}_id{args.id}.json", "w") as f:
         json.dump(results, f)
 
 if __name__ == '__main__':

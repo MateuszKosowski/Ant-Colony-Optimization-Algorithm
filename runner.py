@@ -1,4 +1,5 @@
 import subprocess
+import os
 from concurrent.futures import ProcessPoolExecutor
 from multiprocessing import Process
 
@@ -16,21 +17,16 @@ def launch(params):
         '-e', str(params['evaporation_rate']),
         '--id', str(params['id'])
     ]
-    subprocess.run(cmd)
+    try:
+        subprocess.run(cmd, check=True)
+    except subprocess.CalledProcessError as e:
+        print(f"Crash with parameters: {params}")
+        print(f"Error: {e}")
+
 
 def main():
 
-    jobs = [
-        # {
-        #     "file": "A-n32-k5.txt",
-        #     "ants": 100,
-        #     "alpha": 1.0,
-        #     "beta": 1.0,
-        #     "p_random": 0.05,
-        #     "iterations": 1000,
-        #     "evaporation_rate": 0.5
-        # }
-    ]
+    jobs = []
 
     for exp in EXPERIMENTS:
         experiment_1 = {
@@ -63,9 +59,8 @@ def main():
             all_jobs.append(new_job)
 
     print(len(all_jobs))
-    print(len(set(all_jobs)))
-    # with ProcessPoolExecutor(max_workers=len(all_jobs)) as executor:
-    #     executor.map(launch, all_jobs)
+    with ProcessPoolExecutor(max_workers=os.cpu_count()) as executor:
+        executor.map(launch, all_jobs)
 
 if __name__ == '__main__':
     main()

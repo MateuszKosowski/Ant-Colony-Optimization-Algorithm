@@ -1,1 +1,5 @@
 results/*.json
+plots/*.png
+plots/*.csv
+.idea/
+__pycache__/

@@ -87,10 +87,11 @@ class Ant:
             numerators = []
 
             for place in available_places:
+
                 distance = self.calculate_distance(place)
                 # Dodajemy małą wartość epsilon, aby uniknąć dzielenia przez zero
                 reverse_distance = 1 / (distance + 1e-10)
-                pheromone_on_path = Ant.pheromone_matrix[self.current_place.number][place.number]
+                pheromone_on_path = max(Ant.pheromone_matrix[self.current_place.number][place.number], 1e-20)
                 numerator = pow(pheromone_on_path, self.alpha) * pow(reverse_distance, self.beta)
                 numerators.append(numerator)
 
